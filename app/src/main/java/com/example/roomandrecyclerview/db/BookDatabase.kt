@@ -1,7 +1,5 @@
-package com.example.roomandrecyclerview
+package com.example.roomandrecyclerview.db
 
-import android.app.Application
-import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -19,7 +17,7 @@ abstract class BookDatabase : RoomDatabase() {
         fun getInstance(): BookDatabase {
             if (INSTANCE == null) {
                 INSTANCE = Room.databaseBuilder(
-                    MyApplication.ApplicationContext,
+                    MyApplicationContex.ApplicationContext,
                     BookDatabase::class.java,
                     NAME
                 )

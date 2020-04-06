@@ -1,4 +1,4 @@
-package com.example.roomandrecyclerview
+package com.example.roomandrecyclerview.db
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

@@ -1,9 +1,10 @@
-package com.example.roomandrecyclerview
+package com.example.roomandrecyclerview.db
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import com.example.roomandrecyclerview.db.Book
 
 @Dao
 interface BookDao {

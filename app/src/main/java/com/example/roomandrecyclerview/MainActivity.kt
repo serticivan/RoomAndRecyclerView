@@ -1,11 +1,10 @@
 package com.example.roomandrecyclerview
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
-import android.widget.ArrayAdapter
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.roomandrecyclerview.db.Book
+import com.example.roomandrecyclerview.db.BookDatabase
 
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
@@ -19,34 +18,53 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        btnAddBook.setOnClickListener {
-            addBook()
+        val listOfBooks = generateDummyList(50)
+
+        rvRecyclerViewBooks.adapter = BookAdapter(listOfBooks)
+        rvRecyclerViewBooks.layoutManager = LinearLayoutManager(this)
+        rvRecyclerViewBooks.setHasFixedSize(true)
+
+
+
+
+    }
+
+    private fun generateDummyList(size: Int) : List<Book> {
+
+        val listOfBooks = ArrayList<Book>()
+
+        for (i in 0 until size) {
+
+            val book = Book(i,"title $i", "author $i")
+            listOfBooks += book
+
         }
 
-        btnDestroy.setOnClickListener {
-            destroy()
-        }
+        return listOfBooks
 
-        displayBooks()
     }
 
-    private fun displayBooks() {
-        booksDisplay.adapter = ArrayAdapter(
-            this,
-            android.R.layout.simple_list_item_1,
-            booksDao.getAllBooks()
-        )
-    }
-
-    private fun destroy() {
-        booksDao.nukeDb()
-        displayBooks()
-    }
-
-    private fun addBook() {
-        val index = Random().nextInt(100)
-        val book = Book(0, "Title$index", "Author$index")
-        booksDao.insertBook(book)
-        displayBooks()
-    }
+//    private fun displayBooks() {
+//        booksDisplay.adapter = ArrayAdapter(
+//            this,
+//            android.R.layout.simple_list_item_1,
+//            booksDao.getAllBooks()
+//        )
+//    }
+//
+//    private fun destroy() {
+//        booksDao.nukeDb()
+//        displayBooks()
+//    }
+//
+//    private fun addBook() {
+//        val index = Random().nextInt(100)
+//        val book = Book(
+//            0,
+//            "Title$index",
+//            "Author$index"
+//        )
+//        booksDao.insertBook(book)
+//        displayBooks()
+//    }
 }
