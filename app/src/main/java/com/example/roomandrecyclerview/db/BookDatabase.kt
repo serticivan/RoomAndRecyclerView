@@ -17,7 +17,7 @@ abstract class BookDatabase : RoomDatabase() {
         fun getInstance(): BookDatabase {
             if (INSTANCE == null) {
                 INSTANCE = Room.databaseBuilder(
-                    MyApplicationContex.ApplicationContext,
+                    MyApplicationContext.ApplicationContext,
                     BookDatabase::class.java,
                     NAME
                 )

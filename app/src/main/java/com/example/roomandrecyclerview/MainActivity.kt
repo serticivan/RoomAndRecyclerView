@@ -1,5 +1,6 @@
 package com.example.roomandrecyclerview
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,24 +19,25 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val listOfBooks = generateDummyList(50)
+        btnAddBook.setOnClickListener {
 
-        rvRecyclerViewBooks.adapter = BookAdapter(listOfBooks)
-        rvRecyclerViewBooks.layoutManager = LinearLayoutManager(this)
-        rvRecyclerViewBooks.setHasFixedSize(true)
+            Intent(this, AddNewBookActivity::class.java).apply {
+                startActivity(this)
+            }
+        }
 
-
+        displayBooks()
 
 
     }
 
-    private fun generateDummyList(size: Int) : List<Book> {
+    private fun generateDummyList(size: Int): List<Book> {
 
         val listOfBooks = ArrayList<Book>()
 
         for (i in 0 until size) {
 
-            val book = Book(i,"title $i", "author $i")
+            val book = Book(i, "title $i", "author $i")
             listOfBooks += book
 
         }
@@ -44,7 +46,14 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-//    private fun displayBooks() {
+    private fun displayBooks() {
+        rvRecyclerViewBooks.adapter = BookAdapter(booksDao.getAllBooks())
+        rvRecyclerViewBooks.layoutManager = LinearLayoutManager(this)
+        rvRecyclerViewBooks.setHasFixedSize(true)
+
+    }
+
+    //    private fun displayBooks() {
 //        booksDisplay.adapter = ArrayAdapter(
 //            this,
 //            android.R.layout.simple_list_item_1,
@@ -52,10 +61,10 @@ class MainActivity : AppCompatActivity() {
 //        )
 //    }
 //
-//    private fun destroy() {
-//        booksDao.nukeDb()
-//        displayBooks()
-//    }
+    private fun destroy() {
+        booksDao.nukeDb()
+        displayBooks()
+    }
 //
 //    private fun addBook() {
 //        val index = Random().nextInt(100)
