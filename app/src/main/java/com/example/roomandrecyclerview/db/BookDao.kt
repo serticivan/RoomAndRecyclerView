@@ -24,4 +24,7 @@ interface BookDao {
     @Query("DELETE FROM books")
     fun nukeDb()
 
+    @Query("DELETE FROM books WHERE id = :userId")
+    fun deleteByUserId(userId: Int)
+
 }

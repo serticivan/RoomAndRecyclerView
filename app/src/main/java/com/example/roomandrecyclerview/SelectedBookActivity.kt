@@ -1,10 +1,15 @@
 package com.example.roomandrecyclerview
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import com.example.roomandrecyclerview.db.BookDatabase
 import kotlinx.android.synthetic.main.activity_selected_book.*
 
 class SelectedBookActivity : AppCompatActivity() {
+
+    private val booksDao = BookDatabase.getInstance().bookDao()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +30,14 @@ class SelectedBookActivity : AppCompatActivity() {
 
         etEditTitle.setText(title)
         etEditAuthor.setText(author)
+
+        btnDeleteSelectedBook.setOnClickListener {
+            booksDao.deleteByUserId(id)
+            Toast.makeText(this, "Book deleted $title, $id", Toast.LENGTH_SHORT).show()
+            Intent(this, MainActivity::class.java).apply {
+                startActivity(this)
+            }
+        }
 
     }
 
