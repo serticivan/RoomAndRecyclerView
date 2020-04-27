@@ -17,11 +17,11 @@ class AddNewBookActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_new_book)
 
-        btnCancelSelectedBook.setOnClickListener {
+        btnCancelBook.setOnClickListener {
             finish()
         }
 
-        btnEditBook.setOnClickListener {
+        btnSaveBook.setOnClickListener {
 
             if (etEditTitle.text.isNullOrEmpty() || etEditAuthor.text.isNullOrEmpty()) {
                 when {

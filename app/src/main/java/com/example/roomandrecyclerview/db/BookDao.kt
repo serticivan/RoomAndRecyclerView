@@ -27,4 +27,7 @@ interface BookDao {
     @Query("DELETE FROM books WHERE id = :userId")
     fun deleteByUserId(userId: Int)
 
+    @Query("UPDATE books SET title = :title, author = :author WHERE id = :userId")
+    fun updateBook(userId: Int, title: String, author: String)
+
 }

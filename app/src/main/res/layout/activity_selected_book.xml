@@ -30,10 +30,10 @@
         app:layout_constraintTop_toBottomOf="@+id/etEditTitle" />
 
     <Button
-        android:id="@+id/btnEditBook"
+        android:id="@+id/btnUpdateSelectedBook"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Edit"
+        android:text="Update"
         app:layout_constraintEnd_toStartOf="@+id/btnDeleteSelectedBook"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnCancelSelectedBook"
@@ -44,7 +44,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Cancel"
-        app:layout_constraintEnd_toStartOf="@+id/btnEditBook"
+        app:layout_constraintEnd_toStartOf="@+id/btnUpdateSelectedBook"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etEditAuthor" />
@@ -56,8 +56,8 @@
         android:text="delete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnEditBook"
-        app:layout_constraintTop_toTopOf="@+id/btnEditBook" />
+        app:layout_constraintStart_toEndOf="@+id/btnUpdateSelectedBook"
+        app:layout_constraintTop_toTopOf="@+id/btnUpdateSelectedBook" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
