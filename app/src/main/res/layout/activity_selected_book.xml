@@ -7,6 +7,7 @@
     android:padding="8dp"
     tools:context=".AddNewBookActivity">
 
+
     <EditText
         android:id="@+id/etEditTitle"
         android:layout_width="match_parent"
@@ -32,8 +33,8 @@
         android:id="@+id/btnEditBook"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Save"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Edit"
+        app:layout_constraintEnd_toStartOf="@+id/btnDeleteSelectedBook"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnCancelSelectedBook"
         app:layout_constraintTop_toTopOf="@+id/btnCancelSelectedBook" />
@@ -47,6 +48,16 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etEditAuthor" />
+
+    <Button
+        android:id="@+id/btnDeleteSelectedBook"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnEditBook"
+        app:layout_constraintTop_toTopOf="@+id/btnEditBook" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

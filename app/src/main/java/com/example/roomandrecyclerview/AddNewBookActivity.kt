@@ -17,27 +17,27 @@ class AddNewBookActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_new_book)
 
-        btnCancelAddBook.setOnClickListener {
+        btnCancelSelectedBook.setOnClickListener {
             finish()
         }
 
-        btnSaveBook.setOnClickListener {
+        btnEditBook.setOnClickListener {
 
-            if (etAddTitle.text.isNullOrEmpty() || etAddAuthor.text.isNullOrEmpty()) {
+            if (etEditTitle.text.isNullOrEmpty() || etEditAuthor.text.isNullOrEmpty()) {
                 when {
-                    etAddTitle.text.isNullOrEmpty() -> {
-                        etAddTitle.error = "Title required"
-                        etAddTitle.requestFocus()
+                    etEditTitle.text.isNullOrEmpty() -> {
+                        etEditTitle.error = "Title required"
+                        etEditTitle.requestFocus()
                     }
                     else -> {
-                        etAddAuthor.error = "Author required"
-                        etAddAuthor.requestFocus()
+                        etEditAuthor.error = "Author required"
+                        etEditAuthor.requestFocus()
                     }
                 }
             } else {
 
-                val title = etAddTitle.text.toString()
-                val author = etAddAuthor.text.toString()
+                val title = etEditTitle.text.toString()
+                val author = etEditAuthor.text.toString()
 
                 val book = Book(0, title, author)
 

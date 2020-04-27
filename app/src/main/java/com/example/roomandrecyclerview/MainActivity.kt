@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.book_row.*
 import kotlinx.android.synthetic.main.book_row.view.*
 import java.util.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnItemClickListener {
 
     private val booksDao = BookDatabase.getInstance().bookDao()
 
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun displayBooks() {
-        rvRecyclerViewBooks.adapter = BookAdapter(booksDao.getAllBooks())
+        rvRecyclerViewBooks.adapter = BookAdapter(booksDao.getAllBooks(), this)
         rvRecyclerViewBooks.layoutManager = LinearLayoutManager(this)
         rvRecyclerViewBooks.setHasFixedSize(true)
 
@@ -61,6 +61,24 @@ class MainActivity : AppCompatActivity() {
 
         return listOfBooks
 
+    }
+
+    override fun onClickedItem(book: Book) {
+
+        Intent(this, SelectedBookActivity::class.java).also {
+
+            val title =book.title
+            val author = book.author
+            val id = book.id
+
+            it.putExtra("EXTRA_TITLE", title)
+            it.putExtra("EXTRA_AUTHOR", author)
+            it.putExtra("EXTRA_ID", id)
+
+            startActivity(it)
+        }
+
+        Log.d("MainAct", "title=${book.title} author=${book.author}")
     }
 
 }
