@@ -7,10 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.roomandrecyclerview.db.Book
 import com.example.roomandrecyclerview.db.BookDatabase
-
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.book_row.*
-import kotlinx.android.synthetic.main.book_row.view.*
 import java.util.*
 
 class MainActivity : AppCompatActivity(), OnItemClickListener {
@@ -30,7 +27,7 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
 
     }
 
-    private fun startAddNewBookActivity(){
+    private fun startAddNewBookActivity() {
         Intent(this, AddNewBookActivity::class.java).apply {
             startActivity(this)
         }
@@ -67,7 +64,7 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
 
         Intent(this, SelectedBookActivity::class.java).also {
 
-            val title =book.title
+            val title = book.title
             val author = book.author
             val id = book.id
 

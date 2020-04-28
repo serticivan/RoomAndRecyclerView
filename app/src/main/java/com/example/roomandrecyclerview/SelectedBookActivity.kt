@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.roomandrecyclerview.db.BookDatabase
 import kotlinx.android.synthetic.main.activity_selected_book.*
 
@@ -68,11 +69,17 @@ class SelectedBookActivity : AppCompatActivity() {
         }
 
         btnDeleteSelectedBook.setOnClickListener {
-            booksDao.deleteByUserId(id)
-            Toast.makeText(this, "Book deleted $title, $id", Toast.LENGTH_SHORT).show()
-            Intent(this, MainActivity::class.java).apply {
-                startActivity(this)
+            val alertDialogDelete = AlertDialog.Builder(this)
+            alertDialogDelete.setTitle("Delete item?")
+            alertDialogDelete.setMessage("Do you really want delete this item?")
+            alertDialogDelete.setPositiveButton("Yes") { _, _ ->
+                booksDao.deleteByUserId(id)
+                Intent(this, MainActivity::class.java).apply {
+                    startActivity(this)
+                }
             }
+            alertDialogDelete.setNegativeButton("No") { _, _ -> }
+            alertDialogDelete.show()
         }
 
     }
